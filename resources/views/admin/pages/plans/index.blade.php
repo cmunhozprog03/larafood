@@ -3,13 +3,25 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos &nbsp;&nbsp; <a href="{{ route('plans.create') }}" class="btn btn-dark">ADD</a></h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"></a>Dashboard</li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" class="active">Planos</a></li>
+    </ol>
+
+    <h1>Planos &nbsp;&nbsp; <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="fa fa-plus-square"></i>&nbsp; ADD</a></h1>
+    
+   
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            #filtros
+            <form action="{{ route('plans.search') }}" class="form form-inline" method="POST">
+                @csrf
+                <input type="text" name="filter" placeholder="Nome" 
+                    class="form-control" value="{{ $filters['filter'] ?? '' }}">
+                <button type="submit" class="btn btn-dark">Buscar</button>
+            </form>
         </div>
         <div class="card-body">
             <table class="table table-hover table-striped">
@@ -17,15 +29,16 @@
                     <tr>
                         <th>Nome</th>
                         <th>Preço</th>
-                        <th width="50">Ações</th>
+                        <th width="250">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($plans as $plan)
                         <tr>
                             <td>{{ $plan->name }}</td>
-                            <td>{{ $plan->price }}</td>
+                            <td>{{ number_format($plan->price, 2, ',', '.') }}</td>
                             <td>
+                              <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-info">EDITAR</a>
                               <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">VER</a>
                             </td>
                         </tr>
@@ -34,7 +47,12 @@
             </table>
         </div>
         <div class="card-footer">
-            {{ $plans->links() }}
+            @if (isset($filters))
+                {{ $plans->appends($filters)->links() }}
+            @else  
+                {{ $plans->links() }}
+            @endif
+            
         </div>
 
     </div>
