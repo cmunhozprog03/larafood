@@ -10,7 +10,7 @@
         <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}" class="active">Detalhes</a></li>
     </ol>
     <div class="row justify-content-md-between">
-        <h1>Detalhes do palno: {{ $plan->name }} &nbsp;&nbsp; <a href="{{ route('plans.create') }}" class="btn btn-dark"><i class="fa fa-plus-square"></i>&nbsp; ADD</a></h1>
+        <h1>Detalhes do plano: {{ $plan->name }} &nbsp;&nbsp; <a href="{{ route('details.plan.create', $plan->url)}}" class="btn btn-dark"><i class="fa fa-plus-square"></i>&nbsp; ADD</a></h1>
         
     </div>
     
