@@ -19,15 +19,16 @@
           <p class="lead">Descrição: {{ $plan->description }}</p>
           <p class="lead">Valor:  {{ number_format($plan->price, 2, ',', '.') }}</p>
         </div>
-        <div class="footer">
+        <div class="card-footer">
           <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp; DELETAR O PLANO: {{ $plan->name }}?</button>
+            <button type="submit" class="btn btn-danger my-2"><i class="fa fa-trash"></i>&nbsp; DELETAR O PLANO: {{ $plan->name }}?</button>
           </form>
         </div>
       </div>
     </div>
+  </div>
 
 @stop
 @section('css')

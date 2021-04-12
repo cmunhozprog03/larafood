@@ -3,6 +3,9 @@
 @section('title', 'Detalhes do plano: {$plan->name}')
 
 @section('content_header')
+
+   
+
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"></a>Dashboard</li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
@@ -21,6 +24,7 @@
     <div class="w3-card-4">
 
         <div class="card-body">
+            @include('admin.includes.alerts')
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -35,7 +39,7 @@
 
                             <td>
                               <a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="btn btn-info">EDITAR</a>
-                              <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">VER</a>
+                              <a href="{{ route('details.plan.show', [$plan->url, $detail->id]) }}" class="btn btn-warning">VER</a>
                             </td>
                         </tr>
                     @endforeach
