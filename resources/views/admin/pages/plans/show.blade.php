@@ -13,7 +13,7 @@
     <div class="col-8">
       <div class="card">
         <div class="header">
-          <h5>Plano: {{ $plan->name }}</h5>  
+          <h5>Plano: {{ $plan->name }}</h5>
         </div>
         <div class="body">
           <p class="lead">Descrição: {{ $plan->description }}</p>
@@ -29,4 +29,8 @@
       </div>
     </div>
 
+@stop
+@section('css')
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
 @stop

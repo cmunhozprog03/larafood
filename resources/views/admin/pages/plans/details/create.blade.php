@@ -12,10 +12,10 @@
     </ol>
     <div class="row justify-content-md-between">
         <h1>Detalhes do plano: {{ $plan->name }} &nbsp;&nbsp; <a href="{{ route('details.plan.create', $plan->url) }}" class="btn btn-dark"><i class="fa fa-plus-square"></i>&nbsp; ADD</a></h1>
-        
+
     </div>
-    
-   
+
+
 @stop
 
 @section('content')
@@ -27,3 +27,8 @@
       </div>
     </div>
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+@stop

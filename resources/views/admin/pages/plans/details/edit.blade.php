@@ -12,10 +12,10 @@
     </ol>
     <div class="row justify-content-md-between">
         <h1>Editar detalhe do plano:{{  $detail->name }}} </h1>
-        
+
     </div>
-    
-   
+
+
 @stop
 
 @section('content')
@@ -28,3 +28,8 @@
       </div>
     </div>
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+@stop
