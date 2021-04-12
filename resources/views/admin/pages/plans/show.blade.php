@@ -20,6 +20,7 @@
           <p class="lead">Valor:  {{ number_format($plan->price, 2, ',', '.') }}</p>
         </div>
         <div class="card-footer">
+          @include('admin.includes.alerts')
           <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
             @csrf
             @method('DELETE')
