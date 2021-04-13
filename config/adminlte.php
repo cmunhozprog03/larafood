@@ -101,12 +101,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'bg-gradient-dark',
     'classes_auth_header' => '',
-    'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_body' => 'bg-gradient-dark',
+    'classes_auth_footer' => 'text-center',
+    'classes_auth_icon' => 'text-light',
+    'classes_auth_btn' => 'btn-flat btn-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -232,8 +232,14 @@ return [
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
-            'icon' => 'fa fa-list',
+            'icon' => 'fa fa-fw fa-list',
             'icon_color' => 'yellow',
+        ],
+        [
+            'text' => 'Prefis',
+            'url'  => 'admin/profiles',
+            'icon' => 'fas fa-fw fa-user-friends',
+            'icon_color' => 'info',
         ],
         [
             'text'        => 'pages',
