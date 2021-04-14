@@ -431,7 +431,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => '//https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js',
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js',
                 ],
             ],
         ],

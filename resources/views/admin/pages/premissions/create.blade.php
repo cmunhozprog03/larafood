@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Perfil')
+@section('title', 'Cadastrar Novo Perfil')
 
 @section('content_header')
-    <h1>Detalhes do Perfil: {{ $profile->name }}</h1>
+    <h1>Cadastrar Novo Perfl </h1>
 @stop
 
 @section('content')
@@ -11,19 +11,20 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="w3-card-4">
-        <header class="w3-dark-gray py-1"><h3 class="ml-1">Detalhes do Perfil: {{ $profile->name }}</h3></header>
+        <header class="w3-dark-gray py-1"><h3 class="ml-1">Cadatro de Novo Perfil</h3></header>
         <div class="w3-container">
-          <form action="{{ route('profiles.destroy', $profile->id) }}" class="form" method="POST">
-            @method('DELETE')
+          <form action="{{ route('profiles.store') }}" class="form" method="POST">
+            
 
             @include('admin.pages.profiles._partials.form')
 
             <div class="row justify-content-around">
-              <a href="{{ route('profiles.index') }}" class="btn btn-outline-dark my-2">Voltar</a>
+              <a href="{{ route('profiles.index') }}" class="btn btn-outline-dark my-2">Cancelar</a>
              
-                <button type="submit" class="btn btn-danger my-2">Exluir</button>
+                <button type="submit" class="btn btn-dark my-2">Salvar</button>
               
             </div>
+
           </form>
         </div>
       </div>

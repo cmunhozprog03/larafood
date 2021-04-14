@@ -65,12 +65,9 @@
 @stop
 
 @section('js')
-    @if (Session::has('record_added'))
-    <script>
-        toastr.sucess("{!! Session::get('record_added') !!}")
-    </script>
-        
-    @endif
+
+    @include('admin.includes.toastr')
+    
 @stop
 
 

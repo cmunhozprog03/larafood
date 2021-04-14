@@ -34,7 +34,8 @@ class PlanController extends Controller
         
         $this->repository->create($request->all());
 
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.index')
+                         ->with('record_added', 'Criado com sucesso!');
     }
 
     public function show($url)
@@ -106,6 +107,7 @@ class PlanController extends Controller
         
         $plan->update($request->all());
 
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.index')
+                         ->with('record_changed', 'Alterado com sucesso!');
     }
 }

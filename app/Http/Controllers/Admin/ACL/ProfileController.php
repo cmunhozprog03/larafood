@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $this->repository->create($request->all());
 
         return redirect()->route('profiles.index')
-                         ->with('record_added', 'Salvo com sucesso');;
+                         ->with('record_added', 'Criado com sucesso!');
     }
 
     /**
@@ -60,7 +60,14 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $profile = $this->repository->where('id', $id)->first();
+
+        if(!$profile)
+            return redirect()->back();
+
+        return view('admin.pages.profiles.show', [
+            'profile' => $profile,
+        ]);
     }
 
     /**
@@ -98,7 +105,8 @@ class ProfileController extends Controller
         
         $profile->update($request->all());
 
-        return redirect()->route('profiles.index');
+        return redirect()->route('profiles.index')
+                         ->with('record_changed', 'Alterado com sucesso!');
     }
 
     /**
@@ -109,6 +117,37 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profile = $this->repository->where('id', $id)->first();
+
+        
+        if(!$profile)
+            return redirect()->back();
+        
+        $profile->delete();
+
+        return redirect()->route('profiles.index')
+                         ->with('record_exclused', 'Excluído com sucesso!');
+    }
+
+    /**
+     * Search Results
+     *
+     * @param  request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $filters = $request->only('filter');
+
+        $profiles = $this->repository
+                         ->where(function($query) use ($request){
+                             if($request->filter){
+                                 $query->where('name', 'LIKE', "%{$request->filter}%");
+                                 $query->orWhere('description', 'LIKE', "%{$request->filter}%");
+                             }
+                            })
+                         ->paginate();
+
+        return view('admin.pages.profiles.index', compact('profiles'), compact('filters'));
     }
 }
