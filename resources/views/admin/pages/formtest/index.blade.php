@@ -39,8 +39,8 @@
                                 <td>{{ $profile->name }}</td>
 
                                 <td class="w3-center">
-                                    <a href="{{ route('profiles.edit', $profile->id) }}" 
-                                        class="w3-button w3-white w3-border w3-border-deep-orange w3-text-orange
+                                    <a href="{{ route('formteste.edit', $profile->id) }}" 
+                                        class="w3-button w3-white w3-border w3-border-dark-gray w3-text-orange
                                          w3-round-large w3-hover-orange"><i class="fas fa-pen-alt"></i></a>
                                     <a href="{{ route('profiles.show', $profile->id) }}" 
                                         class="w3-button w3-white w3-border w3-border-indigo w3-text-indigo
@@ -75,15 +75,10 @@
 @section('css')
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
-    
 @stop
 
 @section('js')
-    
     @if (Session::has('record_added'))
-    <script>
-        toastr.success("{!! session::get('record_added') !!}")
-    </script>
-        
+        toastr.sucess("{!! Session::get('record_added') !!}")
     @endif
 @stop

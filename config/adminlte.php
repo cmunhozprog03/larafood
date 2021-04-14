@@ -420,6 +420,21 @@ return [
                 ],
             ],
         ],
+        'Toastr' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js',
+                ],
+            ],
+        ],
     ],
 
     /*

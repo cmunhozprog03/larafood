@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ACL;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateProfileRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class FormTesteController extends Controller
 {
 
     protected $repository;
@@ -16,6 +16,7 @@ class ProfileController extends Controller
     {
         $this->repository = $profile;
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +24,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = $this->repository->paginate();
-
-        return view('admin.pages.profiles.index', compact('profiles'));
+        $profiles = $this->repository->paginate(3);
+        return view('admin.pages.formtest.index', compact('profiles'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.profiles.create');
+        return view('admin.pages.formtest.create');
     }
 
     /**
@@ -48,8 +48,8 @@ class ProfileController extends Controller
     {
         $this->repository->create($request->all());
 
-        return redirect()->route('profiles.index')
-                         ->with('record_added', 'Salvo com sucesso');;
+        return redirect()->route('formteste.index')
+                         ->with('record_added', 'Salvo com sucesso');
     }
 
     /**
@@ -72,13 +72,11 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = $this->repository->where('id', $id)->first();
-
+        
         if(!$profile)
             return redirect()->back();
 
-        return view('admin.pages.profiles.edit', [
-            'profile' => $profile,
-        ]);
+        return view('admin.pages.formtest.edit', compact('profile'));
     }
 
     /**
@@ -91,14 +89,14 @@ class ProfileController extends Controller
     public function update(StoreUpdateProfileRequest $request, $id)
     {
         $profile = $this->repository->where('id', $id)->first();
-
         
         if(!$profile)
             return redirect()->back();
-        
+
         $profile->update($request->all());
 
-        return redirect()->route('profiles.index');
+        return redirect()->route('formteste.index');
+
     }
 
     /**

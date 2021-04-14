@@ -4,6 +4,8 @@ Route::prefix('admin')
     ->namespace('Admin')
     ->group(function () {
 
+
+        Route::resource('formteste', 'FormTesteController');
         /**
          * Routes Profile
          */

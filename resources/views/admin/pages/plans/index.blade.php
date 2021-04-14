@@ -64,5 +64,14 @@
     <link rel="stylesheet" href="{{ asset('css/w3.css') }}">
 @stop
 
+@section('js')
+    @if (Session::has('record_added'))
+    <script>
+        toastr.sucess("{!! Session::get('record_added') !!}")
+    </script>
+        
+    @endif
+@stop
+
 
 
